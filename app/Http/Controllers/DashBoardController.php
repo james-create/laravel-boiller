@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Application;
+use App\Models\User;
 
 class DashBoardController extends Controller
 {
@@ -11,7 +13,20 @@ class DashBoardController extends Controller
      */
     public function dashboard()
     {
-      return view('dashboard.dashboard');
+        $applications = Application::all();
+        $users = User::all();
+
+        // Fetch applications and group them by creation date
+        $applicationsByDate = Application::selectRaw('DATE(created_at) as date, COUNT(*) as count')
+            ->groupBy('date')
+            ->orderBy('date')
+            ->get();
+
+        // Prepare data for the chart
+        $dates = $applicationsByDate->pluck('date')->toArray();
+        $counts = $applicationsByDate->pluck('count')->toArray();
+
+        return view('dashboard.dashboard', compact('applications', 'users', 'dates', 'counts'));
     }
 
     /**

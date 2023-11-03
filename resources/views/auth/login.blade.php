@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in (v2)</title>
+  <title>{{ env('APP_NAME') }}</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -27,13 +27,16 @@
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-
+ <link rel="icon" href="/logo.png" type="image/x-icon">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
+        <center>
+            <img src="/logo.png"  style="width:100px;">
+        </center>
       <a href="/admin/index2.html" class="h1"><b>{{ env('APP_NAME') }}</b></a>
     </div>
     <div class="card-body">
@@ -90,6 +93,18 @@
       <p class="mb-0">
         <a href="/register" class="text-center">Register a new membership</a>
       </p>
+
+      <hr>
+
+      <p class="mb-0">
+       <center>
+        <a  style="color: green;" href="/apply-now" class="text-center">Application form demo click here</a>
+       </center>
+      </p>
+
+
+
+
     </div>
     <!-- /.card-body -->
   </div>
